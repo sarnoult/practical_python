@@ -30,3 +30,12 @@ def read_text(url, save_dir=os.path.join('text_processing', 'data'),
             f.write(text)
 
     return text
+
+
+def novel_lines(text):
+    lines = text.splitlines()
+    i_start = [i for i, line in enumerate(lines) if "*** START" in line][0]
+    i_end = [i for i, line in enumerate(lines) if "*** END" in line][0]
+    return lines[i_start + 1:i_end]
+
+
